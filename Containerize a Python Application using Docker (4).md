@@ -181,6 +181,10 @@ Open terminal and navigate to the project .
 
 - To verify the image built use the following command:
 
+  `
+  docker images
+  `
+
     docker images:
 
     ![](Aspose.Words.58744863-0410-454b-9f6c-54d75ff90591.016.png)
@@ -202,7 +206,7 @@ Open terminal and navigate to the project .
   [*http:://127.0.0.1:8000/*](http://127.0.0.1:5000/)
 
   Flask application:
-  
+
   ![](Aspose.Words.58744863-0410-454b-9f6c-54d75ff90591.020.jpeg)
 
 <br><br>
