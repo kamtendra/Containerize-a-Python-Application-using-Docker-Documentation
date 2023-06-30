@@ -44,31 +44,34 @@ The most commonly used Dockerfile instructions are :
 
 ![](Aspose.Words.58744863-0410-454b-9f6c-54d75ff90591.005.png)
 
-Commonly used Dockerfile instructions
 
-- *This is a sample Dockerfile*
-- *set base image python:3.8-slim-buster*
+```dockerfile
+# This is a sample Dockerfile
 
-*FROM python:3.8-slim-buster*
+# set base image python:3.8-slim-buster
+FROM python:3.8-slim-buster
 
-- *set working directory as app*
+# set working directory as app
+WORKDIR /app
 
-*WORKDIR /app*
+# copy requirements.txt file from local (source) to file structure of container (destination) 
+COPY requirements.txt requirements.txt
 
-- *copy requirements.txt file from local (source) to file structure of container (destination) COPY requirements.txt requirements.txt*
-- *Install the requirements specified in file using RUN*
+# Install the requirements specified in file using RUN
+RUN pip3 install -r requirements.txt
 
-*RUN pip3 install -r requirements.txt*
+# copy all items in current local directory (source) to current container directory (destination)
+COPY . .
 
-- *copy all items in current local directory (source) to current container directory (destination)*
-
-*COPY . .*
-
-- *command to run when image is executed inside a container CMD [ "python3", "app.py" ]* 
+# command to run when image is executed inside a container
+CMD [ "python3", "app.py" ]
+```
 
 ### **Docker Commands**
 
-The most commonly used docker commands are :![](Aspose.Words.58744863-0410-454b-9f6c-54d75ff90591.006.png)
+The most commonly used docker commands are :
+
+![](Aspose.Words.58744863-0410-454b-9f6c-54d75ff90591.006.png)
 
 ### **Getting Started**
 
@@ -80,6 +83,7 @@ We will create a simple project to containerize a Python application by followin
 - Run the image in the container
 
   Project structure:
+
   ![](Aspose.Words.58744863-0410-454b-9f6c-54d75ff90591.007.png)
 
 
@@ -165,9 +169,11 @@ Open terminal and navigate to the project .
     `
 
     docker build:
+
     ![](Aspose.Words.58744863-0410-454b-9f6c-54d75ff90591.013.jpeg)
 
     Successfully built:
+
     ![](Aspose.Words.58744863-0410-454b-9f6c-54d75ff90591.014.png)
 
 
@@ -176,6 +182,7 @@ Open terminal and navigate to the project .
 - To verify the image built use the following command:
 
     docker images:
+
     ![](Aspose.Words.58744863-0410-454b-9f6c-54d75ff90591.016.png)
 
 
@@ -188,12 +195,14 @@ Open terminal and navigate to the project .
   `
 
   docker run:
+
   ![](Aspose.Words.58744863-0410-454b-9f6c-54d75ff90591.018.jpeg)
 
 - Open the browser and typeOpen the browser and type:
   [*http:://127.0.0.1:8000/*](http://127.0.0.1:5000/)
 
   Flask application:
+  
   ![](Aspose.Words.58744863-0410-454b-9f6c-54d75ff90591.020.jpeg)
 
 <br><br>
