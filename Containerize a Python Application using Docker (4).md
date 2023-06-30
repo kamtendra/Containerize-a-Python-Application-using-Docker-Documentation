@@ -220,35 +220,55 @@ There are several platforms available for deploying Docker containers. Here are 
 
 **Kubernetes:** Kubernetes is an open-source container orchestration platform that can manage and deploy Docker containers at scale. It provides advanced features for container scheduling, scaling, load balancing, and automated deployment.
 
+<br>
+
 ![](Aspose.Words.58744863-0410-454b-9f6c-54d75ff90591.023.png)
 
 **Amazon Elastic Container Service (ECS):** ECS is a fully managed container orchestration service provided by Amazon Web Services (AWS). It allows you to easily deploy and scale Docker containers on AWS infrastructure.
+
+<br>
 
 ![](Aspose.Words.58744863-0410-454b-9f6c-54d75ff90591.024.png)
 
 **Amazon Elastic Kubernetes Service (EKS):** EKS is a managed Kubernetes service provided by AWS. It simplifies the deployment, management, and scaling of Kubernetes clusters, allowing you to deploy Docker containers using Kubernetes.
 
+<br>
+
 ![](Aspose.Words.58744863-0410-454b-9f6c-54d75ff90591.025.jpeg)
 
 **(GKE):** GKE is a managed Kubernetes service provided by Google Cloud Platform (GCP). It enables you to deploy and manage Docker containers using Kubernetes on GCP infrastructure.
 
+<br>
+
 ![](Aspose.Words.58744863-0410-454b-9f6c-54d75ff90591.026.png)
 
-**Microsoft Azure Kubernetes Service (AKS):** AKS is a managed Kubernetes service provided by Microsoft Azure. It allows you to deploy and manage Docker containers using Kubernetes on Azure infrastructure.![](Aspose.Words.58744863-0410-454b-9f6c-54d75ff90591.027.png)
+**Microsoft Azure Kubernetes Service (AKS):** AKS is a managed Kubernetes service provided by Microsoft Azure. It allows you to deploy and manage Docker containers using Kubernetes on Azure infrastructure.
 
-**OpenShift:** OpenShift is a container application platform developed by Red Hat. It provides a complete platform for deploying and managing Docker containers and Kubernetes clusters.![](Aspose.Words.58744863-0410-454b-9f6c-54d75ff90591.027.png)
+<br>
+
+![](Aspose.Words.58744863-0410-454b-9f6c-54d75ff90591.027.png)
+
+**OpenShift:** OpenShift is a container application platform developed by Red Hat. It provides a complete platform for deploying and managing Docker containers and Kubernetes clusters.
+
+<br>
 
 ![](Aspose.Words.58744863-0410-454b-9f6c-54d75ff90591.028.png)
 
 **Heroku:** Heroku is a cloud platform that supports the deployment of various types of applications, including Docker containers. It offers a simple and intuitive interface for deploying Docker containers without the need for extensive infrastructure management.
 
+<br>
+
 ![](Aspose.Words.58744863-0410-454b-9f6c-54d75ff90591.029.png)
 
 **DigitalOcean:** DigitalOcean is a cloud infrastructure provider that offers a container service called Kubernetes Engine (DOKS). It allows you to deploy and manage Docker containers using Kubernetes on DigitalOcean infrastructure.
 
+<br>
+
 ![](Aspose.Words.58744863-0410-454b-9f6c-54d75ff90591.030.png)
 
 **Azure Container Instances (ACI):** ACI is a serverless container runtime offered by Microsoft Azure. It allows you to quickly and easily deploy Docker containers without the need for managing underlying infrastructure.
+
+<br>
 
 ![](Aspose.Words.58744863-0410-454b-9f6c-54d75ff90591.031.png)
 
