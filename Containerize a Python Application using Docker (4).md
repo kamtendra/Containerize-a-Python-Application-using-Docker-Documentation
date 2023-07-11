@@ -285,11 +285,39 @@ Here we will be going to choose Oracle Cloud Infrastructure (OCI).
 
 Oracle provides a cloud platform that supports containerization and container orchestration. Oracle offers the following services for deploying Docker containers:
 
-**Oracle Container Engine for Kubernetes (OKE):** OKE is a managed Kubernetes service provided by Oracle. It allows you to create and manage Kubernetes clusters on Oracle Cloud Infrastructure and deploy Docker containers using Kubernetes.
+### **Oracle Container Engine for Kubernetes (OKE)** <br>
+- ***Usage***  <br>
+  OKE provides a managed Kubernetes service, allowing you to create, manage, and scale Kubernetes clusters on Oracle Cloud Infrastructure. You can deploy Docker containers using Kubernetes to achieve container orchestration and automation.
+  <br><br>
+- ***Advantages*** <br>
+  1. **Scalability:** OKE enables you to easily scale your applications by adding or removing containers within the Kubernetes cluster.
+  2. **High Availability:** OKE provides built-in high availability features, such as automatic container rescheduling and node recovery, to ensure your applications remain highly available.
+  3. **Container Orchestration:** Kubernetes, integrated with OKE, offers powerful container orchestration capabilities, including load balancing, rolling updates, and service discovery. <br><br>
+- ***Example*** <br>
+  Suppose you have a Python web application composed of multiple microservices. You can deploy each microservice as a Docker container and use OKE to create a Kubernetes cluster. Kubernetes will handle load balancing, scaling, and management of the containers, ensuring the availability and scalability of your application.
 
-**Oracle Functions:** Oracle Functions is a serverless computing platform that supports Docker containers. You can package your application as a Docker container and deploy it as a function on Oracle Functions.
 
-**Oracle Cloud Infrastructure Registry (OCIR):** OCIR is a Docker container registry provided by Oracle. You can store and manage your Docker images in OCIR, and then deploy those images to OCI services like OKE or Oracle Functions.
+### **Oracle Functions** <br>
+- **Usage** <br>
+ Oracle Functions is a serverless computing platform that supports Docker containers. You can package your application as a Docker container and deploy it as a function on Oracle Functions.
+ <br><br>
+- **Advantages** <br>
+  1. ***Auto-scaling:*** Oracle Functions automatically scales your functions based on incoming event loads, ensuring optimal resource utilization.
+  2. ***Pay-as-you-go:*** With serverless pricing, you only pay for the actual execution time of your functions, resulting in cost savings.
+  3. ***Easy Integration:*** Oracle Functions integrates seamlessly with other OCI services, such as Object Storage and Streaming, enabling you to build serverless workflows and event-driven applications. <br><br>
+- **Example** <br>
+  You can create a Python function that performs image processing tasks, such as resizing images or applying filters. Package your Python function as a Docker container and deploy it on Oracle Functions. Whenever an image is uploaded to an OCI Object Storage bucket, Oracle Functions can trigger the function to process the image, providing a serverless image processing solution. 
+
+### **Oracle Cloud Infrastructure Registry (OCIR)** <br>
+- **Usage** <br>
+  OCIR is a Docker container registry provided by Oracle. You can store and manage your Docker images in OCIR, and then deploy those images to OCI services like OKE or Oracle Functions.
+<br><br>
+- **Advantages** <br>
+  1. ***Security:*** OCIR provides built-in security features, such as encryption at rest and transit, vulnerability scanning, and access control through IAM policies.
+  2. ***Integration:*** OCIR seamlessly integrates with other OCI services, allowing you to deploy Docker images directly from the registry to OCI services.
+  3. ***Collaboration:*** OCIR supports team collaboration, enabling multiple developers to share and collaborate on Docker images. <br><br>
+- **Example** <br>
+  Suppose you have a Python-based microservice architecture, where each microservice is containerized as a Docker image. You can use OCIR to store and manage these Docker images. When deploying the microservices, you can easily pull the images from OCIR and deploy them on OKE, ensuring consistent and reliable deployment across multiple environments.
 
 <br><br>
 
