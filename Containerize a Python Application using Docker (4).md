@@ -382,3 +382,27 @@ The basic steps involved in deploying the containerized Python application to OK
 - Set up the necessary secrets and environment variables in the GitHub repository settings.
 - Commit and push the .github/workflows/deploy.yml file to your repository.
 - GitHub Actions will automatically trigger the workflow when you push changes to the repository.
+
+ <br><br>
+ ## **Extras: Creating Linux Container on the Windows Machine**
+ <br>
+ To create a Linux container on a Windows machine, you can use Docker, which provides a platform for building, packaging, and running containers. Follow these steps:
+
+1. **Install Docker Desktop:** Download and install Docker Desktop for Windows from the Docker website (https://www.docker.com/products/docker-desktop). Make sure your system meets the minimum requirements. <br>
+![](docdesktopimg.png)
+
+2. **Enable Linux Containers:** Once Docker Desktop is installed, right-click on the Docker Desktop icon in the system tray and select "Settings". In the settings window, go to the "General" tab and ensure that "Use the WSL 2 based engine" option is selected. This allows you to use Linux containers on Windows. <br>
+![](docksetting.png) <br>
+![](general.png)
+
+3. **Install a WSL 2 Linux Distribution:** Open the Microsoft Store and search for a Linux distribution of your choice, such as Ubuntu, Debian, or Alpine. Install the Linux distribution and follow the on-screen instructions to set it up. <br>
+![](ubuntu.png) 
+
+4. **Configure Docker to Use WSL 2:** Open Docker Desktop settings again, this time going to the "Resources" tab and then "WSL Integration". Check the box next to the Linux distribution you installed in the previous step. Click "Apply & Restart" to save the changes. <br>
+![](ubuntuindock.png)
+
+5. **Launch the Linux Container:** Open a terminal (PowerShell or Command Prompt) and run the following command to launch a Linux container based on the selected Linux distribution: <br>
+`
+docker run -it --rm <linux-distro>
+`
+
