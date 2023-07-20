@@ -405,3 +405,43 @@ The basic steps involved in deploying the containerized Python application to OK
 docker run -it --rm <linux-distro>
 `
 
+<br><br>
+## **Extras: Working of Each Command of the Bash Script**
+<br>
+Bash Script: <br>
+
+```bash
+#!/bin/bash 
+
+sudo apt update 
+sudo apt install apt-transport-https curl gnupg-agent ca-certificates software-properties-common -y 
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - 
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable" 
+sudo apt install docker-ce docker-ce-cli containerd.io -y 
+mkdir -p ~/.docker/cli-plugins/ 
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.6.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
+chmod +x ~/.docker/cli-plugins/docker-compose 
+sudo docker-compose up -d
+```
+
+Use Case: <br>
+
+`#!/bin/bash` : This line is known as the shebang and specifies the interpreter to use, in this case, it's set to bash.
+
+`sudo apt update` : This line updates the local package lists on the Ubuntu system, ensuring that the latest package information is available.
+
+`sudo apt install apt-transport-https curl gnupg-agent ca-certificates software-properties-common -y` : This line installs several necessary packages (apt-transport-https, curl, gnupg-agent, ca-certificates, and software-properties-common) required for package management and HTTPS communication.
+
+`curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -` : This line retrieves the Docker GPG key from the specified URL using curl and adds it to the system's list of trusted keys using apt-key add.
+
+`sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"` : This line adds the Docker repository to the system's software sources list, enabling the installation of Docker packages.
+
+`sudo apt install docker-ce docker-ce-cli containerd.io -y` : This line installs Docker Engine, Docker CLI, and containerd.io packages using apt package manager.
+
+`mkdir -p ~/.docker/cli-plugins/` : This line creates a directory ~/.docker/cli-plugins/ if it doesn't already exist. This directory is used for storing Docker CLI plugins.
+
+`sudo curl -L "https://github.com/docker/compose/releases/download/v2.6.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose` : This line downloads the Docker Compose binary from the specified URL and saves it as /usr/local/bin/docker-compose. The $(uname -s) and $(uname -m) parts dynamically substitute the current system's operating system and architecture in the URL, respectively.
+
+`chmod +x ~/.docker/cli-plugins/docker-compose` : This line sets the executable permission on the downloaded Docker Compose binary.
+
+`sudo docker-compose up -d` : This line starts the Docker Compose-defined services in detached mode (-d flag), allowing them to run in the background.
