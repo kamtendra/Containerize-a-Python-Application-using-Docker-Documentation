@@ -445,3 +445,175 @@ Use Case: <br>
 `chmod +x ~/.docker/cli-plugins/docker-compose` : This line sets the executable permission on the downloaded Docker Compose binary.
 
 `sudo docker-compose up -d` : This line starts the Docker Compose-defined services in detached mode (-d flag), allowing them to run in the background.
+
+<br><br>
+## **Extras: Running Different Containers on Different Domains mapped to Same IP Address**
+
+To run two simple Flask containers and serve them using Nginx on the domains test1.catman.ai and test2.catman.ai, follow these steps:
+
+- **Step 1: Set up Flask Applications** <br>
+  Create two separate directories for your Flask applications, one for each domain. <br>
+  1. Create a directory for the first Flask app:
+   
+      ```bash
+      mkdir test1_app
+      cd test1_app
+      ```
+
+  2. Create a file named `app.py` inside the `test1_app` directory and add a simple Flask app:
+   
+      ```python
+      # app.py
+
+      from flask import Flask
+
+      app = Flask(__name__)
+
+      @app.route('/')
+      def hello():
+          return "Hello from test1.catman.ai!"
+      ```    
+
+  3. Create a directory for the second Flask app:
+   
+      ```bash
+      mkdir test2_app
+      cd test2_app
+      ```
+
+  4. Create a file named app.py inside the test2_app directory and add a simple Flask app:
+   
+      ```python
+      # app.py
+
+      from flask import Flask
+
+      app = Flask(__name__)
+
+      @app.route('/')
+      def hello():
+          return "Hello from test2.catman.ai!"
+      ```
+
+- **Step 2: Dockerize Flask Applications** <br>
+  Now, create two separate Docker images for each Flask app: <br>
+  1. In the test1_app directory, create a Dockerfile with the following content:
+     
+     ```Dockerfile
+     # Dockerfile for test1_app
+
+     FROM python:3.9
+
+     WORKDIR /app
+
+     COPY requirements.txt .
+     RUN pip install --no-cache-dir -r requirements.txt
+
+     COPY . .
+
+     CMD ["python", "app.py"]
+     ```
+
+  2. Similarly, in the test2_app directory, create a Dockerfile with the following content:
+   
+      ```Dockerfile
+      # Dockerfile for test2_app
+
+      FROM python:3.9
+
+      WORKDIR /app
+
+      COPY requirements.txt .
+      RUN pip install --no-cache-dir -r requirements.txt
+
+      COPY . .
+
+      CMD ["python", "app.py"]
+      ```
+
+- **Step 3: Build Docker Images** <br>
+  Build the Docker images for both Flask applications:
+  
+  1. In the terminal, navigate to the test1_app directory and build the Docker image:
+   
+     ```bash
+     cd /path/to/test1_app
+     docker build -t test1_app .
+     ```
+
+  2. Similarly, navigate to the test2_app directory and build the Docker image:
+      ```bash
+     cd /path/to/test2_app
+     docker build -t test2_app .
+     ```
+
+- **Step 4: Set Up Nginx Reverse Proxy** <br>
+  1. Install Nginx if you haven't already:
+     
+     ```bash
+     sudo apt-get update
+     sudo apt-get install nginx
+     ```
+
+  2. Create a new Nginx configuration file for the two domains (Ensure that you are in root directory):
+ 
+     ```bash
+     sudo vi /etc/nginx/sites-available/catman_ai
+     ```
+
+  3. Add the following configuration to the catman_ai file. Replace the paths, domain names, and IP address with your own:
+
+      ```config
+      server {
+          listen 80;
+          server_name test1.catman.ai;
+
+          location / {
+              proxy_pass http://141.147.98.166:5000;
+          }
+      }
+
+      server {
+          listen 80;
+          server_name test2.catman.ai;
+
+          location / {
+              proxy_pass http://141.147.98.166:5001;
+          }
+      }
+      ```
+
+  4. Create a symbolic link to enable the configuration:
+   
+     ```bash
+     sudo ln -s /etc/nginx/sites-available/catman_ai /etc/nginx/sites-enabled/
+     ```
+
+  5. Test the Nginx configuration:
+   
+     ```bash
+     sudo nginx -t
+     ```
+     
+  6. If the configuration test is successful, restart Nginx:
+     
+     ```bash
+     sudo service nginx restart
+     ```
+
+- **Step 5: Run Docker Containers** <br>
+  Finally, run the Docker containers with the Flask applications:
+
+  1. Run the first Flask app container:
+     
+     ```bash
+     docker run -d -p 5000:5000 test1_app
+     ```
+
+  2. Run the second Flask app container:
+     
+     ```bash
+     docker run -d -p 5001:5000 test2_app
+     ```
+     
+  Your two Flask applications should now be accessible at http://test1.catman.ai and http://test2.catman.ai, served through Nginx reverse proxy.
